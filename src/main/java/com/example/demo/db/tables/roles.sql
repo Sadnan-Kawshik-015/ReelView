@@ -1,0 +1,9 @@
+CREATE TABLE [dbo].[roles] (
+    [id]   VARCHAR (128) NOT NULL,
+    [name] VARCHAR (64)  NOT NULL
+    CONSTRAINT [PK__roles__3213E83F7F75F5A6] PRIMARY KEY CLUSTERED ([id] ASC),
+    CONSTRAINT [IX_roles_name] UNIQUE NONCLUSTERED ([name] ASC)
+    );
+
+
+GO
