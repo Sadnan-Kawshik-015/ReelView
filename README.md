@@ -1,4 +1,4 @@
-# 🎬 CineScope Backend
+# 🎬 ReelView Backend
 
 Backend service for **CineScope** – a personalized IMDb-style movie discovery platform.  
 Built with **Spring Boot** and **MongoDB**, it provides REST APIs for movies, users, ratings, reviews, and watchlists.  
