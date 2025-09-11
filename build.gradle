@@ -14,6 +14,12 @@ java {
 	}
 }
 
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:2023.0.2"
+	}
+}
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
@@ -30,12 +36,17 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.javers:javers-spring-boot-starter-mongo:7.3.6'
+	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'
 	implementation 'org.springdoc:springdoc-openapi-starter-common:2.6.0'
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-api:2.6.0'
 	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.2'
 	implementation 'com.googlecode.libphonenumber:libphonenumber:8.13.43'
+	implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
+	implementation 'org.json:json:20240303'
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.2'
+	implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
 	compileOnly 'org.projectlombok:lombok'
 	implementation 'org.json:json:20240303'
 	runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
