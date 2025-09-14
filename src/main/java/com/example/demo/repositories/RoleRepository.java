@@ -13,5 +13,5 @@ public interface RoleRepository extends JpaRepository<Role,String> {
     @Query(value = "SELECT distinct r FROM Role r " +
             "LEFT JOIN fetch  r.users users " +
             "WHERE r.id =:role_id ")
-    Optional<Role> getRoleById(String roleId);
+    Optional<Role> getRoleById(String role_id);
 }
