@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
-import org.javers.core.metamodel.annotation.ShallowReference;
+import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -93,7 +93,6 @@ public class User implements IMask, Cloneable {
     @Column(name = "password_changed_on")
     private LocalDateTime passwordChangedOn;
 
-    @ShallowReference
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE})
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
@@ -111,6 +110,16 @@ public class User implements IMask, Cloneable {
 
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
+    }
+    public String getFullName() {
+        if (StringUtils.hasText(this.firstName) && StringUtils.hasText(this.lastName)) {
+            String var10000 = this.firstName.trim();
+            return var10000 + " " + this.lastName.trim();
+        } else if (StringUtils.hasText(this.firstName)) {
+            return this.firstName.trim();
+        } else {
+            return StringUtils.hasText(this.lastName) ? this.lastName.trim() : "";
+        }
     }
 
 }

@@ -7,8 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.javers.core.metamodel.annotation.DiffIgnore;
-import org.javers.core.metamodel.annotation.ShallowReference;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -28,9 +26,6 @@ public class Role {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @JsonIgnore
-    @DiffIgnore
-    @ShallowReference
     @ManyToMany(mappedBy = "roles", cascade = {CascadeType.DETACH, CascadeType.MERGE}, fetch = FetchType.LAZY)
     public Set<User> users = new HashSet<>();
 }
