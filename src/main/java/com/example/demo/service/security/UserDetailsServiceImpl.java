@@ -1,5 +1,6 @@
 package com.example.demo.service.security;
 
+import com.example.demo.dtos.security.CustomUserDetails;
 import com.example.demo.entities.User;
 import com.example.demo.repositories.UserRepository;
 import com.example.demo.utils.constants.CommonMessage;

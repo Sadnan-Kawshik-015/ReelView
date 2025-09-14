@@ -1,5 +1,7 @@
 package com.example.demo.utils.annotations;
 
+import com.example.demo.utils.enums.DatabaseType;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
