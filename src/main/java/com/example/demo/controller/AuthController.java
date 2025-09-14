@@ -86,7 +86,7 @@ public class AuthController extends BaseController {
 
     @Tags(value = @Tag(name = "RV004"))
     @PostMapping("/signup")
-    public ResponseEntity<ResponseModelDTO> createAdminUser(@Valid @RequestBody CreateUserDTO createUserDTO) {
+    public ResponseEntity<ResponseModelDTO> signUp(@Valid @RequestBody CreateUserDTO createUserDTO) {
         try {
             CreateUserResponseDTO responseDTO = authService.signUp(createUserDTO);
 
