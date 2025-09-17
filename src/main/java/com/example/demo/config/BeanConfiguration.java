@@ -13,7 +13,6 @@ public class BeanConfiguration {
     EntityManager entityManager;
 
     @Bean(name = "restTemplateWithLoadBalance")
-    @LoadBalanced
     public RestTemplate restTemplateSSL() {
         return new RestTemplate();
     }
