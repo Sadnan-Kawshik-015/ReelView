@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.Set;
@@ -28,4 +29,6 @@ public class Movies {
     private String tags;
     private String poster_path;
     private Set<String> recommended_movie_id;
+    @DocumentReference(lazy = true)
+    private Set<Reviews> reviewIds;
 }

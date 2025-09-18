@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/api", produces = "application/json;charset=UTF-8")
-@Tag(name = "auth management api")
+@Tag(name = "Movie api")
 @Validated
 @RequiredArgsConstructor
 public class MovieController extends BaseController{
