@@ -34,7 +34,8 @@ public class TMDBDataService extends DataService{
             TMDBResponseDTO responseDTO = getMovieDetails(movieId);
             Map<String, String> additionalData = new HashMap<>();
             if (responseDTO != null) {
-                additionalData.put("poster_path", tmdbImageBaseUrl + responseDTO.getPoster_path());
+                additionalData.put("poster_path", tmdbImageBaseUrl +"/w500"+ responseDTO.getPoster_path());
+                additionalData.put("backdrop_path", tmdbImageBaseUrl +"/original"+ responseDTO.getBackdrop_path());
                 List<TMDBVideoResultsDTO> videoResults = responseDTO.getVideos().getResults();
                 if (videoResults != null && !videoResults.isEmpty()) {
                     for (TMDBVideoResultsDTO video : videoResults) {

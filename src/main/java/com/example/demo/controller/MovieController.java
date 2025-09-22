@@ -2,9 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dtos.input.MoviePagingDTO;
 import com.example.demo.dtos.input.MovieSearchDTO;
-import com.example.demo.dtos.output.MovieResponseDTO;
-import com.example.demo.dtos.output.MoviesPaginationResponseDTO;
-import com.example.demo.dtos.output.ResponseModelDTO;
+import com.example.demo.dtos.output.*;
 import com.example.demo.service.MovieService;
 import com.example.demo.utils.enums.Status;
 import io.swagger.v3.oas.annotations.Operation;
@@ -17,6 +15,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api", produces = "application/json;charset=UTF-8")
@@ -54,6 +54,38 @@ public class MovieController extends BaseController{
                     movieId);
             responseModelDTO.setStatus(Status.SUCCESS.getValue());
             responseModelDTO.setMessage(responseDTO==null?"No movies found":"Movies found successfully!");
+            responseModelDTO.setData(responseDTO);
+            return ResponseEntity.ok(responseModelDTO);
+        } catch (Exception e) {
+            return doExceptionTask(e);
+        }
+    }
+    @Tags(value = @Tag(name = "RV018"))
+    @GetMapping("/movies/popular/{n}")
+    public ResponseEntity<ResponseModelDTO> getPopularMovies(@PathVariable("n") Integer n) {
+        try {
+            ResponseModelDTO responseModelDTO = ResponseModelDTO.builder()
+                    .build();
+            List<TopNMovieResponseDTO> responseDTO = movieService.getPopularMovies(
+                    n);
+            responseModelDTO.setStatus(Status.SUCCESS.getValue());
+            responseModelDTO.setMessage(responseDTO.isEmpty()?"No movies found":"Movies found successfully!");
+            responseModelDTO.setData(responseDTO);
+            return ResponseEntity.ok(responseModelDTO);
+        } catch (Exception e) {
+            return doExceptionTask(e);
+        }
+    }
+
+    @Tags(value = @Tag(name = "RV019"))
+    @GetMapping("/stats/movies")
+    public ResponseEntity<ResponseModelDTO> getStats() {
+        try {
+            ResponseModelDTO responseModelDTO = ResponseModelDTO.builder()
+                    .build();
+            MovieStatDTO responseDTO = movieService.getMovieStats();
+            responseModelDTO.setStatus(Status.SUCCESS.getValue());
+            responseModelDTO.setMessage(responseDTO==null?"No data found":"Movies stat found successfully!");
             responseModelDTO.setData(responseDTO);
             return ResponseEntity.ok(responseModelDTO);
         } catch (Exception e) {
