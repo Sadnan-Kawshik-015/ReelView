@@ -16,6 +16,7 @@ public interface MovieRepository extends MongoRepository<Movies,String> {
     List<Movies> findTop10ByOrderByPopularityDesc(Pageable pageable);
     @Query("{ 'movie_id': ?#{#movieId} }")
     Optional<Movies> findByMovieId(@Param("movieId") Integer movieId);
+    List<Movies> findByOrderByPopularityDesc(org.springframework.data.domain.Pageable pageable);
 
 
 }

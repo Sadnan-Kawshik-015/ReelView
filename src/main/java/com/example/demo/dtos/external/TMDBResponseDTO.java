@@ -20,4 +20,5 @@ public class TMDBResponseDTO {
     private Integer runtime;
     private BigDecimal rating;
     private TMDBVideoDTO videos;
+    private String backdrop_path;
 }

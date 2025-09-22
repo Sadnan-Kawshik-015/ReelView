@@ -23,6 +23,8 @@ public class PublicEndpointConfig {
         map.put("/api/auth/reset-password", List.of(HttpMethod.POST));
         map.put("/api/auth/signup", List.of(HttpMethod.POST));
         map.put("/api/movies/search", List.of(HttpMethod.POST));
+        map.put("/api/movies/popular/{n}", List.of(HttpMethod.GET));
+        map.put("/api/stats/movies", List.of(HttpMethod.GET));
         return map;
     }
 
